@@ -1,0 +1,25 @@
+.header {
+  grid-area: header;
+  background-color: rgb(135, 195, 216);
+  padding: 20px;
+  color: rgb(1, 42, 61);
+}
+
+.title {
+  color: white;
+  background-color: gray;
+  font-family: "Noto Sans";
+  font-size: 1em;
+  width: fit-content;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: "Alegreya Sans";
+  font-size: 3em;
+}
+
+.summary {
+  font-family: "Lato";
+}
