@@ -14,7 +14,6 @@ app.use(cors());
 app.use(express.static('website'));
 
 const port = 8080;
-//const server = 
 app.listen(port, () => {
   console.log(`running on localhost: ${port}`);
 });
