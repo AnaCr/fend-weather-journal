@@ -14,18 +14,35 @@
   <body>
     <div class="container">
       <header class="header" id="home">
-        <h1>Weather Journal</h1>
+        <h1 class="title">Weather Journal</h1>
+        <h2 class="subtitle">How are you feeling today?</h2>
+        <p class="summary">
+          Our feelings, like the weather, can change at any time. Think about
+          how you're feeling right now, is it bright and sunny, cool as the
+          breeze, or like lightning about to strike?
+        </p>
       </header>
-      <div class="content">
-        <p>How are you feeling today?</p>
-        <input id="feeling" type="text" />
-        <p>zip code:</p>
-        <input id="zip" type="text" />
-        <button id="submit">View Weather</button>
-        <p>Weather Data:</p>
-        <p id="weather-data"></p>
+      <div class="content" id="content">
+        <label for="feelings">Today, I feel:</label for="feelings">
+        <textarea class="feelings" id="feelings" type="text"></textarea>
+        <input class="zip" id="zip" placeholder="enter your zip code" type="text" />
+        <button class="generate" id="generate">Save</button>
+        <div class="journal-entries" id="journal-entries">
+            <div class="journal-card">
+                <p class="date" id="date">Wednesday, March 3 2021</p>
+                <p class="feeling" id="feeling">Feeling Bored</p>
+                <p class="temperature" id="temperature">71°F</p>
+                <div class="details" id="details">
+                    <p class="location" id="location">Cedar Park, TX</p>
+                    <p class="description" id="description">overcast clouds</p>
+                    <p class="humidity" id="humidity">Humidity: 78%</p>
+                    <p class="wind" id="wind">Wind: 9 mph</p>
+                </div>
+            </div>
+        </div> 
+        <div id="journal-data"></div>
       </div>
-      <div class="footer"></div>
+      <div class="footer" id="footer"></div>
     </div>
     <script src="js/app.js"></script>
   </body>
