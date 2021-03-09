@@ -18,6 +18,16 @@ app.listen(port, () => {
   console.log(`running on localhost: ${port}`);
 });
 
-// const projectData = [];
+const projectData = [];
 
 // Routes
+app.get('/entries', function(req, res) {
+  res.send(projectData);
+})
+
+app.post('/newEntry', addFeelings);
+
+function addFeelings(req, res) {
+  projectData.push(req.body);
+  res.send({'status': 'success'})
+}
