@@ -1,8 +1,12 @@
 .header {
   grid-area: header;
   background-color: rgb(135, 195, 216);
-  padding: 20px;
+  padding: 50px 0;
   color: rgb(1, 42, 61);
+}
+
+.header-content {
+  padding: 20px;
 }
 
 .title {
