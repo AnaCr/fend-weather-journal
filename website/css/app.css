@@ -17,3 +17,13 @@ input {
   display: block;
   margin: 10px 0 10px 0;
 }
+
+.error-message {
+  color: red;
+  margin: 15px 0;
+  font-size: medium;
+}
+
+.hidden {
+  visibility: hidden;
+}
