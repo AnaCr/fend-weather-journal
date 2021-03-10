@@ -4,8 +4,7 @@
   grid-template-rows: auto auto 50px;
   grid-template-areas:
     "header"
-    "content"
-    "footer";
+    "content";
 }
 
 body {
