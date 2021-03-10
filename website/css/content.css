@@ -11,17 +11,6 @@
   width: 100%;
   min-height: 100px;
 }
-/* 
-.shortcuts-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.shortcuts-container > button {
-  background-color: white;
-  width: 100%;
-  margin: 5px;
-} */
 
 .zip {
   font-family: "Lato";
