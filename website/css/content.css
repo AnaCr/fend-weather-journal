@@ -28,6 +28,10 @@
   border: none;
 }
 
+.generate:hover {
+  background-color: rgb(93, 146, 7);
+}
+
 .journal-card {
   display: flex;
   flex-direction: column;
