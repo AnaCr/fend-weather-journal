@@ -1,0 +1,88 @@
+@media (min-width: 480px) {
+  .content,
+  .header-content {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .content,
+  .header-content {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .summary,
+  .title {
+    font-size: 1.5em;
+  }
+
+  .content {
+    font-size: 1.5em;
+    width: 60%;
+  }
+
+  .feelings {
+    font-size: 0.8em;
+  }
+
+  .header-content {
+    width: 60%;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0;
+  }
+
+  .feeling {
+    font-size: 1em;
+    margin: 0 0 0 30px;
+    text-align: start;
+    max-width: 250px;
+  }
+
+  .temperature {
+    margin: 0 0 0 30px;
+  }
+
+  .details {
+    font-size: 0.8em;
+    text-align: start;
+    margin: 0 0 0 30px;
+    min-width: 150px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .subtitle {
+    font-size: 4em;
+  }
+
+  .content {
+    font-size: 2em;
+    width: 50%;
+  }
+
+  .date,
+  .feeling {
+    font-size: 0.8em;
+  }
+
+  .temperature {
+    font-size: 1.5em;
+  }
+
+  .details {
+    font-size: 0.6em;
+  }
+}
