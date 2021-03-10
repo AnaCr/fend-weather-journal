@@ -2,19 +2,47 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const API_KEY = 'f8617bb9fae9a7ec13c0aa7a12f6d85e';
 
 // onclick listener
-const submitEntry = () => {
+const submitEntry = (e) => {
+    e.preventDefault();
+
     const zipcode = document.getElementById('zip').value;
     const feeling = document.getElementById('feelings').value;
+
+    // show an error if zip code or feeling is empty
+    let err = false
+    if (feeling === '') {
+        showError('feelings');
+        err = true;
+    } else {
+        hideError('feelings');
+    }
+    if (zipcode === '') {
+        showError('zip');
+        err = true;
+    } else {
+        hideError('zip');
+    }
+
+    const errormsg = document.getElementById('error-message');
+    if (err) {
+        errormsg.classList.toggle('hidden');
+        return
+    } else {
+        errormsg.classList.add('hidden');
+    }
 
     getWeatherData(BASE_URL, API_KEY, zipcode)
     .then(
         function(weatherdata) {
-            const newData = {
-                feeling: feeling,
-                weather: weatherdata,
-                date: new Date().toDateString()
+            if (weatherdata != null) {
+                const newData = {
+                    feeling: feeling,
+                    weather: weatherdata,
+                    date: new Date().toDateString()
+                }
+                postJournalEntry('/newEntry', newData)
             }
-            postJournalEntry('/newEntry', newData)
+            
         }
     ).then(
         function() {
@@ -57,7 +85,7 @@ const getWeatherData = async (baseURL, apiKey, zipcode) => {
             description: data.weather[0].description,
             humidity: data.main.humidity,
             wind: data.wind.speed,
-
+            iconID: data.weather[0].icon,
         }
         return weatherData;
     } catch (error) {
@@ -87,17 +115,24 @@ const updateUI = async () => {
         date.innerText = entry.date;
         card.appendChild(date);
 
+        const cardcontent = document.createElement('div');
+        cardcontent.classList.add('card-content');
+
+        const icon = document.createElement('img');
+        icon.setAttribute('src', `http://openweathermap.org/img/w/${entry.weather.iconID}.png`)
+        cardcontent.appendChild(icon);
+
         const feeling = document.createElement('p');
         feeling.classList.add('feeling');
         feeling.setAttribute('id', 'feeling');
         feeling.innerText = entry.feeling;
-        card.appendChild(feeling);
+        cardcontent.appendChild(feeling);
 
         const temperature = document.createElement('p');
         temperature.classList.add('temperature');
         temperature.setAttribute('id', 'temperature');
         temperature.innerText = `${entry.weather.temperature}°F`;
-        card.appendChild(temperature);
+        cardcontent.appendChild(temperature);
 
         const details = document.createElement('div');
         details.classList.add('details');
@@ -127,10 +162,23 @@ const updateUI = async () => {
         wind.innerText = `Wind: ${entry.weather.wind} mph`;
         details.appendChild(wind);
 
-        card.appendChild(details);
+        cardcontent.appendChild(details);
+        card.appendChild(cardcontent);
         journalFragment.appendChild(card);
     });
 
     entriesContainer.innerHTML = '';
     entriesContainer.appendChild(journalFragment);
 };
+
+const showError = (elementID) => {
+    const element = document.getElementById(elementID);
+    element.setAttribute('style', 'background-color: rgb(255 0 0 / 23%);')
+}
+
+const hideError = (elementID) => {
+    const element = document.getElementById(elementID);
+    element.setAttribute('style', 'background-color: #f4f4f4;')
+}
+
+updateUI();
