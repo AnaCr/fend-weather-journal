@@ -106,7 +106,7 @@ const updateUI = async () => {
     const latestEntry = entries.slice(-1)[0];
     document.getElementById('date').innerText = latestEntry.date;
     document.getElementById('feeling').innerText = latestEntry.feeling;
-    document.getElementById('temperature').innerText = `${latestEntry.weather.temperature}°F`;
+    document.getElementById('temp').innerText = `${latestEntry.weather.temperature}°F`;
     document.getElementById('location').innerText = `${latestEntry.weather.city}, ${latestEntry.weather.country}`;
     document.getElementById('description').innerText = latestEntry.weather.description;
     document.getElementById('humidity').innerText = `Humidity: ${latestEntry.weather.humidity}%`;
@@ -153,8 +153,8 @@ const updateRecent = async () => {
         cardcontent.appendChild(feeling);
 
         const temperature = document.createElement('p');
-        temperature.classList.add('temperature');
-        temperature.setAttribute('id', 'temperature');
+        temperature.classList.add('temp');
+        temperature.setAttribute('id', 'temp');
         temperature.innerText = `${entry.weather.temperature}°F`;
         cardcontent.appendChild(temperature);
 

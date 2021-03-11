@@ -51,7 +51,7 @@
     max-width: 250px;
   }
 
-  .temperature {
+  .temp {
     margin: 0 0 0 30px;
   }
 
@@ -78,7 +78,7 @@
     font-size: 0.8em;
   }
 
-  .temperature {
+  .temp {
     font-size: 1em;
   }
 
