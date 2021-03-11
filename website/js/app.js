@@ -47,6 +47,7 @@ const submitEntry = (e) => {
     ).then(
         function() {
             updateUI()
+            updateRecent()
         }
     );
 }
@@ -102,10 +103,33 @@ const updateUI = async () => {
         console.log(error);
     }
 
-    const entriesContainer = document.getElementById('journal-entries');
+    const latestEntry = entries.slice(-1)[0];
+    document.getElementById('date').innerText = latestEntry.date;
+    document.getElementById('feeling').innerText = latestEntry.feeling;
+    document.getElementById('temperature').innerText = `${latestEntry.weather.temperature}°F`;
+    document.getElementById('location').innerText = `${latestEntry.weather.city}, ${latestEntry.weather.country}`;
+    document.getElementById('description').innerText = latestEntry.weather.description;
+    document.getElementById('humidity').innerText = `Humidity: ${latestEntry.weather.humidity}%`;
+    document.getElementById('wind').innerText = `Wind: ${latestEntry.weather.wind} mph`;
+};
+
+const updateRecent = async () => {
+    let entries
+    try {
+        const res = await fetch('/entries');
+        entries = await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+
+    const entriesContainer = document.getElementById('recent-entries');
     const journalFragment = new DocumentFragment();
-    entries.forEach((entry)=> {
-        console.log(entry);
+
+    if (entries.length > 5) {
+        entries = entries.slice(1).slice(-5);
+    }
+    
+    entries.forEach((entry) => {
         const card = document.createElement('div');
         card.classList.add('journal-card');
 
@@ -153,7 +177,7 @@ const updateUI = async () => {
         const humidity = document.createElement('p');
         humidity.classList.add('humidity');
         humidity.setAttribute('id', 'humidity');
-        humidity.innerText = `Humidity: ${entry.weather.humidity}`;
+        humidity.innerText = `Humidity: ${entry.weather.humidity}%`;
         details.appendChild(humidity);
 
         const wind = document.createElement('p');
@@ -169,7 +193,9 @@ const updateUI = async () => {
 
     entriesContainer.innerHTML = '';
     entriesContainer.appendChild(journalFragment);
-};
+}
+
+updateRecent();
 
 const showError = (elementID) => {
     const element = document.getElementById(elementID);
@@ -180,5 +206,3 @@ const hideError = (elementID) => {
     const element = document.getElementById(elementID);
     element.setAttribute('style', 'background-color: #f4f4f4;')
 }
-
-updateUI();

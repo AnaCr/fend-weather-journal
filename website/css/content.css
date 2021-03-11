@@ -3,6 +3,7 @@
   padding: 20px;
   font-family: "Lato";
   font-size: 1.2em;
+  max-width: 700px;
 }
 
 .feelings {
@@ -42,6 +43,32 @@
   border: 3px solid rgb(135, 195, 216);
   margin: 30px 0;
   font-family: "Alegreya Sans";
+  border-radius: 3px;
+}
+
+#entry-holder {
+  border: 3px solid rgb(93, 146, 7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#entry-holder > .date {
+  background-color: rgb(93, 146, 7);
+  margin: 0;
+}
+
+#entry-holder > p {
+  margin: 5px;
+}
+
+#entry-holder > .location,
+#entry-holder > .description,
+#entry-holder > .humidity,
+#entry-holder > .wind {
+  font-family: "Lato";
+  font-size: 0.8em;
 }
 
 .card-content {
@@ -51,7 +78,7 @@
   justify-content: center;
 }
 
-.date {
+#date {
   background-color: rgb(135, 195, 216);
   margin: 0;
   padding: 5px 0;
@@ -59,15 +86,15 @@
   width: 100%;
 }
 
-.feeling {
+#feeling {
   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   margin: 10px 0 10px 0;
   text-align: center;
   font-family: "Lato";
 }
 
-.temperature {
-  font-size: 2em;
+#temperature {
+  font-size: 1.5em;
   margin: 0 0 10px 0;
 }
 
@@ -79,4 +106,9 @@
 .details > p {
   margin: 5px;
   font-family: "Lato";
+}
+
+.recent-entries-header {
+  font-size: 0.8em;
+  color: rgb(1, 42, 61);
 }
